@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">EnglishClass</string>
+    <string-array name="Carreras">
+        <item>Mecanica</item>
+        <item>Sistemas</item>
+        <item>Mecatronica</item>
+        <item>Materiales</item>
+        <item>Bioquimica</item>
+        <item>IGE</item>
+        <item>ITIC`s</item>
+        <item>Industrial</item>
+        <item>Informatica</item>
+    </string-array>
+
 </resources>

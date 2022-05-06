@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnglishClass">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.LoggedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
