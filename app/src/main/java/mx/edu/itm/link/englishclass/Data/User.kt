@@ -1,11 +1,11 @@
 package mx.edu.itm.link.englishclass.Data
 
-class User(id:String, pass: String, nombre:String,apellidos:String,carrera:String,status:Boolean, profileIMG:String){
-    val id= id
-    val pass=pass
-    val nombre=nombre
-    val apellidos=apellidos
-    val carrera=carrera
-    val status = status
-    val profileIMG=profileIMG
-}
+data class User(
+    var id:String? = null,
+    var correo:String? = null,
+    var pass: String? = null,
+    var nombre:String? = null,
+    var apellidos:String?= null,
+    var carrera:String?=null,
+    var status:String?=null,
+    var profileIMG:String?=null)

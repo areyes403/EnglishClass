@@ -6,59 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".views.activities.RegisterActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnSaveEdited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
         android:backgroundTint="@color/secundary"
         android:textColor="@color/black"
-        android:drawableRight="@drawable/ic_send"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfileIMG" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProfileIMGEditing" />
 
     <EditText
-        android:id="@+id/tfName"
-        android:layout_width="300dp"
+        android:id="@+id/tfNameEditting"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Nombre(s)"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tfSurnames"
-        android:layout_width="300dp"
+        android:id="@+id/tfSurnamesEditting"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Apellidos"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfName" />
+        app:layout_constraintTop_toBottomOf="@+id/tfNameEditting" />
 
     <EditText
-        android:id="@+id/tfEmail"
-        android:layout_width="300dp"
+        android:id="@+id/tfEmailEditing"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
@@ -66,11 +53,11 @@
         android:hint="Correo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfSurnames" />
+        app:layout_constraintTop_toBottomOf="@+id/tfSurnamesEditting" />
 
     <EditText
-        android:id="@+id/tfPassword"
-        android:layout_width="300dp"
+        android:id="@+id/tfPasswordEdditing"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
@@ -78,27 +65,27 @@
         android:hint="Contraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tfEmailEditing" />
 
     <ImageView
-        android:id="@+id/imgProfileIMG"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/imgProfileIMGEditing"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
-        android:src="@drawable/avatar"
+        android:src="@drawable/ic_imgprofile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spCarrera"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/spCarreraEditting"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Spinner
-        android:id="@+id/spCarrera"
+        android:id="@+id/spCarreraEditting"
         android:layout_width="wrap_content"
         android:entries="@array/Carreras"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tfPasswordEdditing" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
