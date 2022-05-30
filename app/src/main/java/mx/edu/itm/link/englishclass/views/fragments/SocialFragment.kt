@@ -202,16 +202,27 @@ class SocialFragment : Fragment() {
 
     private fun onCallRequest(caller: String?) {
         var name=""
+        var obj = User()
+        var obj2 = User()
         if (caller == null){
             return
         }else{
             for (a in usersList){
                 if (caller==a.id){
                     name=a.nombre.toString()
+                    obj=a
                 }
             }
+
+            for (a in usersList){
+                if (uniqueId==a.id){
+                    //name=a.nombre.toString()
+                    obj2=a
+                }
+            }
+
             callLayout.visibility = View.VISIBLE
-            incomingCallTxt.text = "${name!!} is calling..."
+            incomingCallTxt.text = "${obj.nombre!!} is calling..."
 
             acceptBtn.setOnClickListener {
                 firebaseRef.child(username).child("connId").setValue(uniqueId)
@@ -221,9 +232,11 @@ class SocialFragment : Fragment() {
                 val id=UUID.randomUUID().toString()
                 val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
                 val currentDate = sdf.format(Date())
-                callended.child(id).child("receptor").setValue("Erick Reyes")
-                callended.child(id).child("emisor").setValue("Abraham reyes")
+                callended.child(id).child("receptor").setValue(obj2.nombre)
+                callended.child(id).child("emisor").setValue(obj.nombre)
                 callended.child(id).child("date").setValue(currentDate)
+                callended.child(id).child("idEmisor").setValue(obj.id)
+                callended.child(id).child("idReceptor").setValue(obj2.id)
                 callLayout.visibility = View.INVISIBLE
 
                 switchToControls()

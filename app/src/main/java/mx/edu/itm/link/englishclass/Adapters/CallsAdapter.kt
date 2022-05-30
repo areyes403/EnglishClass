@@ -37,9 +37,9 @@ class CallsAdapter(var context: CallsFragment, val res: Int, var list: ArrayList
             val receptor: TextView=itemView.findViewById(R.id.receptorCalls)
             val date: TextView=itemView.findViewById(R.id.dateCalls)
 
-            emisor.text="To : ${item.emisor}"
-            receptor.text="From: ${item.receptor}"
-            date.text="Fecha y hora:${item.date}"
+            emisor.text="From : ${item.emisor}"
+            receptor.text="To: ${item.receptor}"
+            date.text="Date:${item.date}"
         }
     }
 }
