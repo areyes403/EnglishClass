@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import mx.edu.itm.link.englishclass.R
-import kotlinx.android.synthetic.main.activity_logged.*
 import mx.edu.itm.link.englishclass.presenter.fragments.CallsFragment
 import mx.edu.itm.link.englishclass.presenter.fragments.SettingsFragment
 import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
@@ -32,14 +31,6 @@ class LoggedActivity : AppCompatActivity() {
         val callFragment = CallsFragment()
         makeCurrentFragment(socialFragment)
 
-        botton_navigation.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.icSocial -> makeCurrentFragment(socialFragment)
-                R.id.icCalls -> makeCurrentFragment(callFragment)
-                R.id.icSettings -> makeCurrentFragment(settingsFragment)
-            }
-            true
-        }
     }
 
     private fun makeCurrentFragment(fragment: Fragment) =

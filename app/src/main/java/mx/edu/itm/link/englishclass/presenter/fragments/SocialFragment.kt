@@ -16,7 +16,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_social.*
 import mx.edu.itm.link.englishclass.Adapters.ActiveUsersAdapter
 import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
@@ -55,6 +54,7 @@ class SocialFragment : Fragment() {
         username = uid
         //println("username: "+username)
 
+        /*
         toggleAudioBtn.setOnClickListener {
             isAudio = !isAudio
             callJavascriptFunction("javascript:toggleAudio(\"${isAudio}\")")
@@ -73,7 +73,9 @@ class SocialFragment : Fragment() {
         }
 
 
-        setupWebView()
+         */
+
+       // setupWebView()
 
     }
     //consultar usuarios
@@ -111,13 +113,13 @@ class SocialFragment : Fragment() {
 
             try {
                 val adapter= ActiveUsersAdapter(this,R.layout.activeuser_item, newList)
-                rvLogeed.adapter = adapter
-                rvLogeed.layoutManager = LinearLayoutManager(activity)
+                //rvLogeed.adapter = adapter
+                //rvLogeed.layoutManager = LinearLayoutManager(activity)
                 adapter.setOnItemClickListener(object : ActiveUsersAdapter.onItemClickListener{
                     override fun onItemClickListener(position: Int) {
                         friendsUsername = newList.get(position).id.toString()
                         sendCallRequest()
-                        callingLayout.visibility=View.VISIBLE
+                        //callingLayout.visibility=View.VISIBLE
                     }
                 })//del onclickadapter
 
@@ -127,8 +129,8 @@ class SocialFragment : Fragment() {
         }//del empty lista
 
         println("usuario logeado: "+user.nombre)
-        txtNameCurrentUser.text="Hello ${user.nombre}!! How are you today?"
-        txtStatusCurrentUser.text="Your current status: Active"
+        //txtNameCurrentUser.text="Hello ${user.nombre}!! How are you today?"
+        //txtStatusCurrentUser.text="Your current status: Active"
 
     }//refreshcontactos
 
@@ -154,13 +156,14 @@ class SocialFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value == null)
                     return
-                switchToControls()
-                callingLayout.visibility=View.INVISIBLE
-                callJavascriptFunction("javascript:startCall(\"${snapshot.value}\")")
+                //switchToControls()
+                //callingLayout.visibility=View.INVISIBLE
+                //callJavascriptFunction("javascript:startCall(\"${snapshot.value}\")")
             }
         })
     }
 
+    /*
     private fun setupWebView() {
 
         webView.webChromeClient = object: WebChromeClient() {
@@ -184,13 +187,15 @@ class SocialFragment : Fragment() {
         }
     }
 
+     */
+
     var uniqueId = ""
 
     private fun initializePeer() {
 
-        uniqueId = getUniqueID()
+        //uniqueId = getUniqueID()
 
-        callJavascriptFunction("javascript:init(\"${uniqueId}\")")
+        //callJavascriptFunction("javascript:init(\"${uniqueId}\")")
         firebaseRef.child(username).child("incoming").addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -220,6 +225,7 @@ class SocialFragment : Fragment() {
                     obj2=a
                 }
             }
+            /*
 
             callLayout.visibility = View.VISIBLE
             incomingCallTxt.text = "${obj.nombre!!} is calling..."
@@ -250,14 +256,18 @@ class SocialFragment : Fragment() {
                 firebaseRef.child(username).child("incoming").setValue(null)
                 callLayout.visibility = View.INVISIBLE
             }
+
+             */
         }//if
+
+
 
 
     }
 
     private fun switchToControls() {
-        webView.visibility=View.VISIBLE
-        callControlLayout.visibility = View.VISIBLE
+        //webView.visibility=View.VISIBLE
+        //callControlLayout.visibility = View.VISIBLE
     }
 
     private fun getUniqueID(): String {
@@ -266,7 +276,7 @@ class SocialFragment : Fragment() {
     }
 
     private fun callJavascriptFunction(functionString: String) {
-        webView.post { webView.evaluateJavascript(functionString, null) }
+       // webView.post { webView.evaluateJavascript(functionString, null) }
     }
 
     fun onPeerConnected() {
@@ -275,10 +285,10 @@ class SocialFragment : Fragment() {
 
     private fun endCall(){
         firebaseRef.child(username).setValue(null)
-        webView.loadUrl("about:blank")
-        webView.visibility=View.INVISIBLE
-        callLayout.visibility=View.INVISIBLE
-        callControlLayout.visibility=View.INVISIBLE
+       // webView.loadUrl("about:blank")
+       // webView.visibility=View.INVISIBLE
+       // callLayout.visibility=View.INVISIBLE
+        //callControlLayout.visibility=View.INVISIBLE
     }
 
 }

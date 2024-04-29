@@ -6,7 +6,6 @@ import android.text.Html
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_main.*
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.databinding.ActivityMainBinding
 
@@ -35,11 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        btnNewRegister.setText(Html.fromHtml(getResources().getString(R.string.btnRegister)))
 
-        btnNewRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
     }
 
     private fun loggin(e: String, p: String){

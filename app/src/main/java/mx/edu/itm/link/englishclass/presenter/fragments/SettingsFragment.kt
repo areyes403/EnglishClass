@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_settings.*
 import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.presenter.activities.EditProfileActivity
@@ -65,14 +64,7 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        txtNameSettings.text="Name: ${user.nombre}"
-        txtSurnamesSettings.text="Surnames: ${user.apellidos}"
-        txtCarreraSettings.text="Academic Major: ${user.carrera}"
-        txtEmailSettings.text="Email: ${user.correo}"
 
-        btnEditSettings.setOnClickListener{
-            startActivity(Intent(activity, EditProfileActivity::class.java))
-        }
 
     }
 

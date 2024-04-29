@@ -19,9 +19,6 @@
             android:name=".presenter.activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".presenter.activities.CallActivity"
-            android:exported="false" />
-        <activity
             android:name=".presenter.activities.LoggedActivity"
             android:exported="false" />
         <activity

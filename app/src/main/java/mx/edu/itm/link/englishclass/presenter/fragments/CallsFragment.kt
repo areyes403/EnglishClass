@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_calls.*
 import mx.edu.itm.link.englishclass.Adapters.CallsAdapter
 import mx.edu.itm.link.englishclass.data.model.Call
 import mx.edu.itm.link.englishclass.R
@@ -49,8 +48,6 @@ class CallsFragment : Fragment() {
     private fun refreshCalls(list: ArrayList<Call>) {
         val newList: ArrayList<Call> = arrayListOf()
         val adapter= CallsAdapter(this,R.layout.calls_ended_item, list)
-        rvCalls.adapter = adapter
-        rvCalls.layoutManager = LinearLayoutManager(activity)
     }
 }
 

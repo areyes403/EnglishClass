@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
 
@@ -23,6 +22,7 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
         getusers()
 
+        /*
         btnSaveEdited.setOnClickListener{
             database= FirebaseDatabase.getInstance().getReference("users")
             val uid = Firebase.auth.currentUser!!.uid
@@ -34,6 +34,8 @@ class EditProfileActivity : AppCompatActivity() {
 
             finish()
         }
+
+         */
     }
 
     private fun getusers(){
@@ -63,13 +65,6 @@ class EditProfileActivity : AppCompatActivity() {
                 user=a
             }
         }
-
-        println(user.nombre)
-
-        tfNameEditting.setText(user.nombre)
-        tfSurnamesEditting.setText(user.apellidos)
-        tfEmailEditing.setText(user.correo)
-
 
     }
 }
