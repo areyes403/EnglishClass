@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.views.activities
+package mx.edu.itm.link.englishclass.presenter.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,22 +8,25 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import mx.edu.itm.link.englishclass.R
+import mx.edu.itm.link.englishclass.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //Firebase.initialize(this)
         auth= FirebaseAuth.getInstance()
 
-        btnLogin.setOnClickListener {
-            val mail=tfEmailLogin.text.toString().trim()
-            val pas=tfPasswordLogin.text.toString()
+        binding.btnLogin.setOnClickListener {
+            val mail = binding.tfEmailLogin.text.toString().trim()
+            val pas = binding.tfPasswordLogin.text.toString()
 
             if (mail.isBlank()||pas.isBlank()){
                 Toast.makeText(this,"Rellena todos los campos",Toast.LENGTH_SHORT).show()

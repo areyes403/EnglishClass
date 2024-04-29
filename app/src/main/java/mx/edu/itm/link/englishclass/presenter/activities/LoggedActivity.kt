@@ -1,18 +1,16 @@
-package mx.edu.itm.link.englishclass.views.activities
+package mx.edu.itm.link.englishclass.presenter.activities
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import mx.edu.itm.link.englishclass.R
-import androidx.navigation.NavController
 import kotlinx.android.synthetic.main.activity_logged.*
-import mx.edu.itm.link.englishclass.views.fragments.CallsFragment
-import mx.edu.itm.link.englishclass.views.fragments.SettingsFragment
-import mx.edu.itm.link.englishclass.views.fragments.SocialFragment
+import mx.edu.itm.link.englishclass.presenter.fragments.CallsFragment
+import mx.edu.itm.link.englishclass.presenter.fragments.SettingsFragment
+import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
 
 
 class LoggedActivity : AppCompatActivity() {

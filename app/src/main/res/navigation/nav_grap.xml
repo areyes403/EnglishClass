@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/socialFragment"
-        android:name="mx.edu.itm.link.englishclass.views.fragments.SocialFragment"
+        android:name="mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment"
         android:label="fragment_social"
         tools:layout="@layout/fragment_social" />
     <fragment
         android:id="@+id/callsFragment"
-        android:name="mx.edu.itm.link.englishclass.views.fragments.CallsFragment"
+        android:name="mx.edu.itm.link.englishclass.presenter.fragments.CallsFragment"
         android:label="fragment_calls"
         tools:layout="@layout/fragment_calls" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="mx.edu.itm.link.englishclass.views.fragments.SettingsFragment"
+        android:name="mx.edu.itm.link.englishclass.presenter.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="mx.edu.itm.link.englishclass.views.fragments.EditProfileFragment"
+        android:name="mx.edu.itm.link.englishclass.presenter.fragments.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 </navigation>

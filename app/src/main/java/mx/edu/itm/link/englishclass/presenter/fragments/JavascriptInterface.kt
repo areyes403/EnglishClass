@@ -1,7 +1,6 @@
-package mx.edu.itm.link.englishclass.views.fragments
+package mx.edu.itm.link.englishclass.presenter.fragments
 
 import android.webkit.JavascriptInterface
-import mx.edu.itm.link.englishclass.views.activities.LoggedActivity
 
 class JavascriptInterface(val socialFragment: SocialFragment) {
     @JavascriptInterface

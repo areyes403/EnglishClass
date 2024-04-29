@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/toBackground"
-    tools:context=".views.fragments.CallsFragment">
+    tools:context=".presenter.fragments.CallsFragment">
 
     <LinearLayout
         android:gravity="center"

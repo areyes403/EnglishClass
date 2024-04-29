@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.views.fragments
+package mx.edu.itm.link.englishclass.presenter.fragments
 
 
 import android.os.Bundle
@@ -18,7 +18,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_social.*
 import mx.edu.itm.link.englishclass.Adapters.ActiveUsersAdapter
-import mx.edu.itm.link.englishclass.Data.User
+import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
 import java.text.SimpleDateFormat
 import java.util.*

@@ -16,19 +16,19 @@
         android:theme="@style/Theme.EnglishClass"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.activities.EditProfileActivity"
+            android:name=".presenter.activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.CallActivity"
+            android:name=".presenter.activities.CallActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.LoggedActivity"
+            android:name=".presenter.activities.LoggedActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.RegisterActivity"
+            android:name=".presenter.activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.MainActivity"
+            android:name=".presenter.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

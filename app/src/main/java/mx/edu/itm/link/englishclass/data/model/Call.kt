@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.Data
+package mx.edu.itm.link.englishclass.data.model
 
 data class Call(
     var idemisor:String?=null,

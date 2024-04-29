@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.views.fragments
+package mx.edu.itm.link.englishclass.presenter.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_calls.*
 import mx.edu.itm.link.englishclass.Adapters.CallsAdapter
-import mx.edu.itm.link.englishclass.Data.Call
+import mx.edu.itm.link.englishclass.data.model.Call
 import mx.edu.itm.link.englishclass.R
 import kotlin.collections.ArrayList
 

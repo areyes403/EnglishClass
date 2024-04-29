@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.views.fragments
+package mx.edu.itm.link.englishclass.presenter.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

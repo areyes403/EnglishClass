@@ -1,18 +1,21 @@
-package mx.edu.itm.link.englishclass.views.activities
+package mx.edu.itm.link.englishclass.presenter.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_settings.*
-import mx.edu.itm.link.englishclass.Data.User
+import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
+import mx.edu.itm.link.englishclass.presenter.activities.EditProfileActivity
 
-class EditProfileActivity : AppCompatActivity() {
+
+class SettingsFragment : Fragment() {
 
     //database
     private lateinit var database: DatabaseReference
@@ -21,24 +24,19 @@ class EditProfileActivity : AppCompatActivity() {
     private var usersList: ArrayList<User> = arrayListOf<User>()
     private var user: User = User()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_profile)
         getusers()
-
-        btnSaveEdited.setOnClickListener{
-            database= FirebaseDatabase.getInstance().getReference("users")
-            val uid = Firebase.auth.currentUser!!.uid
-            database.child(uid).child("nombre").setValue(tfNameEditting.text.toString())
-            database.child(uid).child("apellidos").setValue(tfSurnamesEditting.text.toString())
-
-            database.child(uid).child("correo").setValue(tfEmailEditing.text.toString())
-
-
-            finish()
-        }
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_settings, container, false)
+        println("Soy:"+user.nombre)
+    }
+
+    //consultar usuarios
     private fun getusers(){
         database= FirebaseDatabase.getInstance().getReference("users")
         database.addValueEventListener(object : ValueEventListener {
@@ -67,12 +65,16 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
 
-        println(user.nombre)
+        txtNameSettings.text="Name: ${user.nombre}"
+        txtSurnamesSettings.text="Surnames: ${user.apellidos}"
+        txtCarreraSettings.text="Academic Major: ${user.carrera}"
+        txtEmailSettings.text="Email: ${user.correo}"
 
-        tfNameEditting.setText(user.nombre)
-        tfSurnamesEditting.setText(user.apellidos)
-        tfEmailEditing.setText(user.correo)
-
+        btnEditSettings.setOnClickListener{
+            startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
 
     }
+
+
 }

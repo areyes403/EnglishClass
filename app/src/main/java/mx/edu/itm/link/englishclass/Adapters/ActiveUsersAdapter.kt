@@ -10,9 +10,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import mx.edu.itm.link.englishclass.Data.User
+import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
-import mx.edu.itm.link.englishclass.views.fragments.SocialFragment
+import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
 
 
   class ActiveUsersAdapter(var context: SocialFragment, val res: Int, var list: ArrayList<User>) : RecyclerView.Adapter<ActiveUsersAdapter.ViewHolder>(){

@@ -1,16 +1,13 @@
 package mx.edu.itm.link.englishclass.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import mx.edu.itm.link.englishclass.Data.Call
-import mx.edu.itm.link.englishclass.Data.User
+import mx.edu.itm.link.englishclass.data.model.Call
 import mx.edu.itm.link.englishclass.R
-import mx.edu.itm.link.englishclass.views.fragments.CallsFragment
-import org.w3c.dom.Text
+import mx.edu.itm.link.englishclass.presenter.fragments.CallsFragment
 
 
 class CallsAdapter(var context: CallsFragment, val res: Int, var list: ArrayList<Call>): RecyclerView.Adapter<CallsAdapter.ViewHolder>() {
