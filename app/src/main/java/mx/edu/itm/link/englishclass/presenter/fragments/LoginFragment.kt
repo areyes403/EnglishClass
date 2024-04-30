@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.databinding.FragmentLoginBinding
@@ -43,8 +44,11 @@ class LoginFragment : Fragment() {
                 }
                 authViewModel.login(user = email, pass = pass)
             }
-        }
 
+            txtRegister.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            }
+        }
         observers()
     }
 

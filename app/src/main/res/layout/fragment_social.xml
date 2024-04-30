@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.fragments.SocialFragment"
-    android:background="@color/toBackground">
+    tools:context=".presenter.fragments.SocialFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -19,7 +18,6 @@
             android:id="@+id/txtNameCurrentUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginStart="25dp"
             android:layout_weight="1"
@@ -33,7 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:textColor="@color/black"
             android:layout_marginEnd="25dp"
             android:layout_weight="1"
             android:text="TextView"
@@ -59,7 +56,6 @@
             android:backgroundTint="#f5f5f5"
             android:drawableLeft="@drawable/ic_baseline_list_24"
             android:text="List Users:"
-            android:textColor="@color/black"
 
             android:textSize="20dp"
             android:textStyle="italic" />

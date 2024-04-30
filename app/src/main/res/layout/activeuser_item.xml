@@ -67,7 +67,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textColor="@color/black"
                     android:textSize="14dp"
                     app:layout_constraintEnd_toStartOf="@+id/callUserActive"
                     app:layout_constraintStart_toEndOf="@+id/imgPhotoProfileItem"
@@ -76,7 +75,6 @@
                 <TextView
                     android:id="@+id/carreraUserActive"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/black"
                     android:textSize="14dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -91,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView"
-                    android:textColor="@color/black"
                     android:textSize="14dp"
                     app:layout_constraintEnd_toStartOf="@+id/callUserActive"
                     app:layout_constraintStart_toEndOf="@+id/imgPhotoProfileItem"
