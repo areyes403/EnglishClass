@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.Adapters
+package mx.edu.itm.link.englishclass.presenter.Adapters
 
 import android.view.LayoutInflater
 import android.view.View

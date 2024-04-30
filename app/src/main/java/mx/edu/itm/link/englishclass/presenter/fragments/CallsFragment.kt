@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import mx.edu.itm.link.englishclass.Adapters.CallsAdapter
+import mx.edu.itm.link.englishclass.presenter.Adapters.CallsAdapter
 import mx.edu.itm.link.englishclass.data.model.Call
 import mx.edu.itm.link.englishclass.R
 import kotlin.collections.ArrayList

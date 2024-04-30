@@ -16,7 +16,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import mx.edu.itm.link.englishclass.Adapters.ActiveUsersAdapter
+import mx.edu.itm.link.englishclass.presenter.Adapters.ActiveUsersAdapter
 import mx.edu.itm.link.englishclass.data.model.User
 import mx.edu.itm.link.englishclass.R
 import java.text.SimpleDateFormat

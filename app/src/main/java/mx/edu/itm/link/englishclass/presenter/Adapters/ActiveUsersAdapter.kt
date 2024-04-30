@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.Adapters
+package mx.edu.itm.link.englishclass.presenter.Adapters
 
 
 
@@ -23,7 +23,7 @@ import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
          fun onItemClickListener(position: Int)
      }
 
-     fun setOnItemClickListener(listener:onItemClickListener){
+     fun setOnItemClickListener(listener: onItemClickListener){
          mListener=listener
      }
 

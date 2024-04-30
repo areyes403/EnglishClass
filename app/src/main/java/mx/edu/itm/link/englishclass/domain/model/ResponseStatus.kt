@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.presenter.util
+package mx.edu.itm.link.englishclass.domain.model
 
 sealed class ResponseStatus<out T> {
     class Success<out T>(val data:T) : ResponseStatus<T>()
