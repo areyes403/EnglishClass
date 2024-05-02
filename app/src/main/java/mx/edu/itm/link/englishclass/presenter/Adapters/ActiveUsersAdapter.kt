@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import mx.edu.itm.link.englishclass.data.model.User
+import mx.edu.itm.link.englishclass.profile_feature.domain.model.User
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
 
@@ -58,8 +58,8 @@ import mx.edu.itm.link.englishclass.presenter.fragments.SocialFragment
             val status: Button=itemView.findViewById(R.id.viewStatus)
             val btnCalls:ImageView = itemView.findViewById(R.id.callUserActive)
 
-            tvName.text="User: ${item.nombre} "+ item.apellidos
-            tvCarrera.text="Carrera: ${item.carrera}"
+            //tvName.text="User: ${item.nombre} "+ item.apellidos
+            //tvCarrera.text="Carrera: ${item.carrera}"
             tvLevelEnglish.text="English level: Basic"
             //status.setEnabled(true);
             if (item.status == "true"){

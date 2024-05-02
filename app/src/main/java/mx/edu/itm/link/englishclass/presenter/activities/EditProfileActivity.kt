@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import mx.edu.itm.link.englishclass.data.model.User
+import mx.edu.itm.link.englishclass.profile_feature.domain.model.User
 import mx.edu.itm.link.englishclass.R
 
 class EditProfileActivity : AppCompatActivity() {

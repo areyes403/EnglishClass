@@ -1,6 +1,5 @@
 package mx.edu.itm.link.englishclass.presenter.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +8,8 @@ import android.view.ViewGroup
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
-import mx.edu.itm.link.englishclass.data.model.User
+import mx.edu.itm.link.englishclass.profile_feature.domain.model.User
 import mx.edu.itm.link.englishclass.R
-import mx.edu.itm.link.englishclass.presenter.activities.EditProfileActivity
 
 
 class SettingsFragment : Fragment() {
@@ -32,7 +30,7 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
-        println("Soy:"+user.nombre)
+
     }
 
     //consultar usuarios

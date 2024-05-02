@@ -5,22 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.PermissionRequest
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import mx.edu.itm.link.englishclass.presenter.Adapters.ActiveUsersAdapter
-import mx.edu.itm.link.englishclass.data.model.User
+import mx.edu.itm.link.englishclass.profile_feature.domain.model.User
 import mx.edu.itm.link.englishclass.R
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -128,7 +121,6 @@ class SocialFragment : Fragment() {
             }
         }//del empty lista
 
-        println("usuario logeado: "+user.nombre)
         //txtNameCurrentUser.text="Hello ${user.nombre}!! How are you today?"
         //txtStatusCurrentUser.text="Your current status: Active"
 
@@ -214,7 +206,7 @@ class SocialFragment : Fragment() {
         }else{
             for (a in usersList){
                 if (caller==a.id){
-                    name=a.nombre.toString()
+                    //name=a.nombre.toString()
                     obj=a
                 }
             }

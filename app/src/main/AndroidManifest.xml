@@ -13,17 +13,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".presenter.MyApp"
+        android:name=".core.MyApp"
         android:theme="@style/Theme.EnglishClass"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".presenter.activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".presenter.activities.LoggedActivity"
+            android:name=".presenter.activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".presenter.activities.MainActivity"
+            android:name=".core.presentation.MainActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>

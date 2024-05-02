@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import mx.edu.itm.link.englishclass.data.model.Call
+import mx.edu.itm.link.englishclass.call_feature.data.model.Call
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.presenter.fragments.CallsFragment
 

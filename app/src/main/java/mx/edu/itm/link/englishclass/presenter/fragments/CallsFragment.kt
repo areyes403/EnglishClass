@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import mx.edu.itm.link.englishclass.presenter.Adapters.CallsAdapter
-import mx.edu.itm.link.englishclass.data.model.Call
+import mx.edu.itm.link.englishclass.call_feature.data.model.Call
 import mx.edu.itm.link.englishclass.R
 import kotlin.collections.ArrayList
 
