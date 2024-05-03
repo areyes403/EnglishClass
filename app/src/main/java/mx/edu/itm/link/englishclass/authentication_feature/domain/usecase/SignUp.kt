@@ -1,7 +1,7 @@
 package mx.edu.itm.link.englishclass.authentication_feature.domain.usecase
 
 
-import mx.edu.itm.link.englishclass.profile_feature.domain.model.User
+import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 import mx.edu.itm.link.englishclass.authentication_feature.domain.repository.AuthRepository
 import javax.inject.Inject
 

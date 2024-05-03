@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.fragments.SocialFragment">
+    tools:context=".user_feature.presentation.social.SocialFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -63,14 +63,14 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLogeed"
+        android:id="@+id/rvUsers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/btn"
         android:layout_marginTop="2dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
-        tools:listitem="@layout/activeuser_item" />
+        tools:listitem="@layout/item_active_user" />
 
     <WebView
         android:visibility="gone"

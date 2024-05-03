@@ -1,6 +1,7 @@
 package mx.edu.itm.link.englishclass.authentication_feature.presentation.signup
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import mx.edu.itm.link.englishclass.core.utils.snackBar
 import mx.edu.itm.link.englishclass.databinding.FragmentRegisterBinding
+import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
@@ -27,11 +29,21 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observers()
 
+
+
+
         binding.apply {
-
-
             btnRegister.setOnClickListener {
-
+                val prof=binding.menu.editText?.text.toString()
+                viewModel.register(
+                    email = tfEmail.editText?.text.toString(),
+                    password = tfPassword.editText?.text.toString(),
+                    userData = User(
+                        name = tfName.editText?.text.toString(),
+                        surNames = tfSurnames.editText?.text.toString(),
+                        profession = prof
+                    )
+                )
             }
         }
     }
