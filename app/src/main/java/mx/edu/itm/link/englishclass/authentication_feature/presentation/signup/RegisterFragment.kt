@@ -7,9 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
+import mx.edu.itm.link.englishclass.core.utils.checkIfIsValidEmail
+import mx.edu.itm.link.englishclass.core.utils.checkIfIsValidPassword
 import mx.edu.itm.link.englishclass.core.utils.snackBar
+import mx.edu.itm.link.englishclass.core.utils.toast
 import mx.edu.itm.link.englishclass.databinding.FragmentRegisterBinding
 import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 
@@ -35,9 +39,22 @@ class RegisterFragment : Fragment() {
         binding.apply {
             btnRegister.setOnClickListener {
                 val prof=binding.menu.editText?.text.toString()
+                val email= tfEmail.editText?.text.toString()
+                val pass = tfPassword.editText?.text.toString()
+
+                if(!email.checkIfIsValidEmail()){
+                    tfEmail.editText?.error="Ingresa un correo valido"
+                    return@setOnClickListener
+                }
+
+                if (!pass.checkIfIsValidPassword()){
+                    tfPassword.editText?.error="Ingresa un correo valido"
+                    return@setOnClickListener
+                }
+
                 viewModel.register(
-                    email = tfEmail.editText?.text.toString(),
-                    password = tfPassword.editText?.text.toString(),
+                    email = email,
+                    password = email,
                     userData = User(
                         name = tfName.editText?.text.toString(),
                         surNames = tfSurnames.editText?.text.toString(),
@@ -55,7 +72,8 @@ class RegisterFragment : Fragment() {
 
                 }
                 is ResponseStatus.Success->{
-
+                    toast(response.data)
+                    findNavController().popBackStack()
                 }
                 is ResponseStatus.Error->{
                     snackBar(response.error)

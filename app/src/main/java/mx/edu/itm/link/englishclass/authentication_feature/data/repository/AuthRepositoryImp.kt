@@ -24,8 +24,9 @@ class AuthRepositoryImp @Inject constructor(
 
     override suspend fun register(email: String, password: String, user: User): ResponseStatus<String> = try {
         val uid = authRef.createUserWithEmailAndPassword(email,password).await().user!!.uid
-        firestoreRef.collection(FirestoreCollecions.USER).document(uid).set(user)
-        ResponseStatus.Success(uid)
+        user.id=uid
+        firestoreRef.collection(FirestoreCollecions.USER).document(user.id).set(user)
+        ResponseStatus.Success("Registrado con exito")
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
     }

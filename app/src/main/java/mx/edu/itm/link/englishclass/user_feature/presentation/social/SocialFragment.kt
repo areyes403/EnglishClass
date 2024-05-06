@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import mx.edu.itm.link.englishclass.user_feature.presentation.social.adapter.AdapterActiveUsers
@@ -26,7 +27,7 @@ import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import mx.edu.itm.link.englishclass.core.utils.snackBar
 import mx.edu.itm.link.englishclass.databinding.FragmentSocialBinding
 
-
+@AndroidEntryPoint
 class SocialFragment : Fragment() {
 
     var friendsUsername = ""
@@ -92,7 +93,10 @@ class SocialFragment : Fragment() {
             }
 
         }.launchIn(lifecycleScope)
+
+        viewModel.fbUser
     }
+
     /*
     //refrescar Recycler
     private fun refreshContacts(list:ArrayList<User>){
@@ -161,7 +165,6 @@ class SocialFragment : Fragment() {
         })
     }
 
-
     private fun setupWebView() {
         binding.apply {
             webView.webChromeClient = object: WebChromeClient() {
@@ -185,7 +188,6 @@ class SocialFragment : Fragment() {
             }
         }
     }
-
 
     var uniqueId = ""
 
@@ -270,7 +272,6 @@ class SocialFragment : Fragment() {
         //webView.visibility=View.VISIBLE
         //callControlLayout.visibility = View.VISIBLE
     }
-
 
     private fun callJavascriptFunction(functionString: String) {
        binding.webView.post { binding.webView.evaluateJavascript(functionString, null) }
