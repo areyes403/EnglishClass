@@ -15,18 +15,23 @@ class AuthRepositoryImp @Inject constructor(
     private val firestoreRef:FirebaseFirestore
 ) : AuthRepository {
 
-    override suspend fun login(emai: String, password: String): ResponseStatus<String> = try {
-        val user = authRef.signInWithEmailAndPassword(emai,password).await()
-        ResponseStatus.Success(user.user!!.uid)
+    override suspend fun login(emai: String, password: String): ResponseStatus<User> = try {
+        val ref = authRef.signInWithEmailAndPassword(emai,password).await()
+        val user= firestoreRef.collection(FirestoreCollecions.USER)
+            .document(ref.user!!.uid)
+            .get()
+            .await()
+            .toObject(User::class.java)
+        ResponseStatus.Success(user!!)
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
     }
 
-    override suspend fun register(email: String, password: String, user: User): ResponseStatus<String> = try {
+    override suspend fun register(email: String, password: String, user: User): ResponseStatus<User> = try {
         val uid = authRef.createUserWithEmailAndPassword(email,password).await().user!!.uid
         user.id=uid
         firestoreRef.collection(FirestoreCollecions.USER).document(user.id).set(user)
-        ResponseStatus.Success("Registrado con exito")
+        ResponseStatus.Success(user)
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
     }

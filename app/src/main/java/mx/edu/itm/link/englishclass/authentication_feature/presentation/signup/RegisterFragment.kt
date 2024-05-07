@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import mx.edu.itm.link.englishclass.core.utils.checkIfIsValidEmail
 import mx.edu.itm.link.englishclass.core.utils.checkIfIsValidPassword
@@ -54,7 +55,7 @@ class RegisterFragment : Fragment() {
 
                 viewModel.register(
                     email = email,
-                    password = email,
+                    password = pass,
                     userData = User(
                         name = tfName.editText?.text.toString(),
                         surNames = tfSurnames.editText?.text.toString(),
@@ -72,8 +73,8 @@ class RegisterFragment : Fragment() {
 
                 }
                 is ResponseStatus.Success->{
-                    toast(response.data)
-                    findNavController().popBackStack()
+                    viewModel.insertUser(user = response.data)
+                    findNavController().setGraph(R.navigation.nav_home)
                 }
                 is ResponseStatus.Error->{
                     snackBar(response.error)

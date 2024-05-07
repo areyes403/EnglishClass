@@ -94,7 +94,12 @@ class SocialFragment : Fragment() {
 
         }.launchIn(lifecycleScope)
 
-        viewModel.fbUser
+        viewModel.user.observe(viewLifecycleOwner){
+            binding.txtNameCurrentUser.text="Hola: "+it.name
+            binding.txtStatusCurrentUser.text="Status: Conectado"
+        }
+        //binding.txtNameCurrentUser.text=viewModel.user.name
+        //binding.txtStatusCurrentUser.text="Conectado"
     }
 
     /*

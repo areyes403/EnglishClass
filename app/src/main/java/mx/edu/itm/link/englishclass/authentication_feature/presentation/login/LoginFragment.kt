@@ -1,5 +1,6 @@
 package mx.edu.itm.link.englishclass.authentication_feature.presentation.login
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -63,12 +64,16 @@ class LoginFragment : Fragment() {
                     snackBar(response.error)
                 }
                 is ResponseStatus.Success->{
-                    toast(response.data)
-
+                    //toast(response.data)
+                    Log.i("user",response.data.toString())
+                    viewModel.insertUser(user = response.data)
+                    findNavController().setGraph(R.navigation.nav_home)
                 }
             }
         }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
