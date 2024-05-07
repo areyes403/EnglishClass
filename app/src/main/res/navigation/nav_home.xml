@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_social" />
     <fragment
         android:id="@+id/callsFragment"
-        android:name="mx.edu.itm.link.englishclass.call_feature.presenter.calls.CallsFragment"
+        android:name="mx.edu.itm.link.englishclass.call_feature.presentation.call_history.HistoryCallsFragment"
         android:label="fragment_calls"
-        tools:layout="@layout/fragment_calls" />
+        tools:layout="@layout/fragment_history_calls" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="mx.edu.itm.link.englishclass.user_feature.presentation.settings.SettingsFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="mx.edu.itm.link.englishclass.user_feature.presentation.profile.ProfileFragment"
+        android:name="mx.edu.itm.link.englishclass.user_feature.presentation.settings.ProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

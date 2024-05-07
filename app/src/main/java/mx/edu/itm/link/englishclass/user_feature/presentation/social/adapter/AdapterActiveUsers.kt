@@ -20,7 +20,6 @@ class AdapterActiveUsers(
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         with(holder){
             binding.apply {
                 nameUserActive.text=data[position].name

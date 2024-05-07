@@ -1,4 +1,4 @@
-package mx.edu.itm.link.englishclass.user_feature.presentation.profile
+package mx.edu.itm.link.englishclass.user_feature.presentation.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

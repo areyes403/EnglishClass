@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.core.utils.hide
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             Log.i("userDetails", authViewModel.user.value.toString())
             binding.bottonNavigation.show()
             navController.setGraph(R.navigation.nav_home)
+            binding.bottonNavigation.setupWithNavController(navController)
         }
     }
 

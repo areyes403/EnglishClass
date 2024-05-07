@@ -5,66 +5,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import mx.edu.itm.link.englishclass.user_feature.domain.model.User
-import mx.edu.itm.link.englishclass.R
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
+import mx.edu.itm.link.englishclass.databinding.FragmentSettingsBinding
 
-
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
-    //database
-    private lateinit var database: DatabaseReference
+    private var _binding:FragmentSettingsBinding?=null
+    private val binding get() = _binding!!
 
-    //arraylist for users
-    private var usersList: ArrayList<User> = arrayListOf<User>()
-    private var user: User = User()
+    private val model by viewModels<SettingsViewModel>()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getusers()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding=FragmentSettingsBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observers()
     }
 
-    //consultar usuarios
-    private fun getusers(){
-        database= FirebaseDatabase.getInstance().getReference("users")
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                usersList?.clear()
-                if(snapshot.exists()){
-                    for(userSnap in snapshot.children){
-                        val userData=userSnap.getValue(User::class.java)
-                        usersList.add(userData!!)
-                    }
-                    getaUser(usersList)
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
-    private fun getaUser(list: ArrayList<User>) {
-        for (a in list){
-            //println("Soy el usuario: "+a.nombre)
-            if (a.id== Firebase.auth.currentUser!!.uid){
-                //println("fui el elegido :"+a.id)
-                user=a
-            }
+    private fun observers() {
+        model.user.observe(requireActivity()){
+            binding.txtNameSettings.text="Nombre(s): "+it.name
+            binding.txtCarreraSettings.text="Carrera: "+it.profession
+            binding.txtSurnamesSettings.text="Appellidos: "+it.surNames
         }
-
-
-
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
+    }
 }
