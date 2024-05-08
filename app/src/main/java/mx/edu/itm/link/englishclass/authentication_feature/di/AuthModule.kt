@@ -6,6 +6,7 @@ import com.google.firebase.auth.auth
 import com.google.firebase.database.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -22,7 +23,8 @@ object AuthModule {
     @Singleton
     fun bindAuthRepository(
         auth: FirebaseAuth,
-        firestore:FirebaseFirestore
-    ): AuthRepository = AuthRepositoryImp(auth,firestore)
+        firestore:FirebaseFirestore,
+        messaging:FirebaseMessaging
+    ): AuthRepository = AuthRepositoryImp(auth,firestore,messaging)
 }
 

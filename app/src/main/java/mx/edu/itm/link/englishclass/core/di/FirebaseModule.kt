@@ -5,6 +5,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.database.database
 import com.google.firebase.firestore.firestore
+import com.google.firebase.messaging.messaging
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -35,6 +36,10 @@ object FirebaseModule {
     @Provides
     @Singleton
     fun provideUsersCollection()= provideFirestoreRef().collection(FirestoreCollecions.USER)
+
+    @Provides
+    @Singleton
+    fun provideFirebaseMessaging()= Firebase.messaging
 
 }
 

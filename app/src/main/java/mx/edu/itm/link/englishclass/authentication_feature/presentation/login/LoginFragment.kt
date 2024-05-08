@@ -65,8 +65,8 @@ class LoginFragment : Fragment() {
                 }
                 is ResponseStatus.Success->{
                     //toast(response.data)
-                    Log.i("user",response.data.toString())
-                    viewModel.insertUser(user = response.data)
+                    //Log.i("user",response.data.toString())
+                    viewModel.updateToken(user = response.data)
                     findNavController().setGraph(R.navigation.nav_home)
                 }
             }
