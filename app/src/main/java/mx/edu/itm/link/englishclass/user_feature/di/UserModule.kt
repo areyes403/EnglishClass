@@ -22,5 +22,5 @@ object UserModule {
         auth: FirebaseAuth,
         @UserCollection
         usersCollection:CollectionReference
-    ): UserRepository= UserRepositoryImp(auth,usersCollection)
+    ): UserRepository= UserRepositoryImp(authRef = auth, usersRef = usersCollection)
 }

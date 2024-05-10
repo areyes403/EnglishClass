@@ -9,7 +9,9 @@
         android:id="@+id/socialFragment"
         android:name="mx.edu.itm.link.englishclass.user_feature.presentation.social.SocialFragment"
         android:label="fragment_social"
-        tools:layout="@layout/fragment_social" />
+        tools:layout="@layout/fragment_social" >
+        <action android:id="@+id/action_socialFragment_to_videoCallFragment" app:destination="@id/videoCallFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/callsFragment"
         android:name="mx.edu.itm.link.englishclass.call_feature.presentation.call_history.HistoryCallsFragment"
@@ -29,4 +31,8 @@
         android:name="mx.edu.itm.link.englishclass.user_feature.presentation.settings.ProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment android:id="@+id/videoCallFragment"
+              android:name="mx.edu.itm.link.englishclass.call_feature.presentation.realtime_videocall.VideoCallFragment"
+              android:label="VideoCallFragment"
+              tools:layout="@layout/fragment_videocall"/>
 </navigation>

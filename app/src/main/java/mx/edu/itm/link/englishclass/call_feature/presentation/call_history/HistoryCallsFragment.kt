@@ -35,7 +35,7 @@ class HistoryCallsFragment : Fragment() {
     }
 
     private fun observers() {
-        model.callHistory.onEach { response->
+        model.realtimeCallHistory.onEach { response->
             when(response){
                 is ResponseStatus.Loading->{
 

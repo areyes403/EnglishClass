@@ -2,9 +2,13 @@ package mx.edu.itm.link.englishclass.core.di
 
 
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.messaging
 import dagger.Component
 import dagger.Module
@@ -22,15 +26,15 @@ object FirebaseModule {
 
     @Provides
     @Singleton
-    fun provideAuthRef() = Firebase.auth
+    fun provideAuthRef(): FirebaseAuth = Firebase.auth
 
     @Provides
     @Singleton
-    fun provideFirestoreRef() = Firebase.firestore
+    fun provideFirestoreRef():FirebaseFirestore = Firebase.firestore
 
     @Provides
     @Singleton
-    fun provideFirebaseRef() = Firebase.database
+    fun provideFirebaseRef():FirebaseDatabase = Firebase.database
 
     @UserCollection
     @Provides
@@ -39,7 +43,7 @@ object FirebaseModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseMessaging()= Firebase.messaging
+    fun provideFirebaseMessaging():FirebaseMessaging= Firebase.messaging
 
 }
 

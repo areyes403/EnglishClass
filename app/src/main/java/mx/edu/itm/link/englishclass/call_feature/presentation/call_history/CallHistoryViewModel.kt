@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.edu.itm.link.englishclass.authentication_feature.domain.usecase.GetLocalUser
-import mx.edu.itm.link.englishclass.call_feature.domain.model.Call
+import mx.edu.itm.link.englishclass.call_feature.domain.model.RealtimeCall
 import mx.edu.itm.link.englishclass.call_feature.domain.usecase.GetCallHistory
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import javax.inject.Inject
@@ -18,8 +18,8 @@ class CallHistoryViewModel @Inject constructor(
     private val getCallHistoryUseCase:GetCallHistory,
     private val localUserUseCase: GetLocalUser
 ):ViewModel(){
-    private val _callHistory=MutableStateFlow<ResponseStatus<List<Call>>>(ResponseStatus.Loading)
-    val callHistory:StateFlow<ResponseStatus<List<Call>>> get() = _callHistory
+    private val _Realtime_callHistory=MutableStateFlow<ResponseStatus<List<RealtimeCall>>>(ResponseStatus.Loading)
+    val realtimeCallHistory:StateFlow<ResponseStatus<List<RealtimeCall>>> get() = _Realtime_callHistory
 
     init {
         getHistory()
@@ -28,7 +28,7 @@ class CallHistoryViewModel @Inject constructor(
     private fun getHistory() = viewModelScope.launch(Dispatchers.IO){
         val user = localUserUseCase.invoke()!!
         getCallHistoryUseCase.invoke(user.id).collect{
-            _callHistory.value=it
+            _Realtime_callHistory.value=it
         }
     }
 }
