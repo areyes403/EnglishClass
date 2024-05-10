@@ -67,6 +67,9 @@ class VideoCallViewModel @Inject constructor(
         }
     }
 
+    fun endCall(){
+
+    }
 
     private fun startObserver(uid:String) =viewModelScope.launch(Dispatchers.IO){
         observeVideoCallUseCase.invoke(uid).collect{

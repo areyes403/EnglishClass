@@ -49,7 +49,7 @@ class CallRepositoryImp @Inject constructor(
                 .setValue(videoCallData)
                 .await()
 
-            onResult.invoke(ResponseStatus.Success("Completed"))
+            onResult.invoke(ResponseStatus.Success(videoCallData.id))
 
         }catch (e:Exception){
             onResult.invoke(ResponseStatus.Error(e.localizedMessage))

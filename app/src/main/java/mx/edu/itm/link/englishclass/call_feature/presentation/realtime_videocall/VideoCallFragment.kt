@@ -13,12 +13,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.google.firebase.database.ServerValue
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import mx.edu.itm.link.englishclass.R
 import mx.edu.itm.link.englishclass.call_feature.domain.model.CallState
-import mx.edu.itm.link.englishclass.call_feature.domain.usecase.JavascriptInterface
 import mx.edu.itm.link.englishclass.core.domain.model.GeneralId
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import mx.edu.itm.link.englishclass.core.utils.ARGS
@@ -26,7 +24,6 @@ import mx.edu.itm.link.englishclass.core.utils.show
 import mx.edu.itm.link.englishclass.core.utils.snackBar
 import mx.edu.itm.link.englishclass.databinding.FragmentVideocallBinding
 import mx.edu.itm.link.englishclass.user_feature.domain.model.User
-import java.util.*
 
 class VideoCallFragment : Fragment() {
 
@@ -64,13 +61,6 @@ class VideoCallFragment : Fragment() {
         }
 
         observers()
-    }
-    private fun endCall(){
-        //firebaseRef.child(viewModel.fbUser.uid).setValue(null)
-        // webView.loadUrl("about:blank")
-        // webView.visibility=View.INVISIBLE
-        // callLayout.visibility=View.INVISIBLE
-        //callControlLayout.visibility=View.INVISIBLE
     }
 
     private fun sendCallRequest() {
@@ -118,71 +108,9 @@ class VideoCallFragment : Fragment() {
     }
 
     private fun callJavascriptFunction(functionString: String) {
-        binding.webView.post { binding.webView.evaluateJavascript(functionString, null) }
-    }
-
-    private fun onCallRequest(caller: String?) {
-        var name=""
-        var obj = User()
-        var obj2 = User()
-        if (caller == null){
-            return
-        }else{
-            /*
-            for (a in usersList){
-                if (caller==a.id){
-                    //name=a.nombre.toString()
-                    obj=a
-                }
-            }
-
-            for (a in usersList){
-                if (uniqueId==a.id){
-                    //name=a.nombre.toString()
-                    obj2=a
-                }
-            }
-
-             */
-            /*
-
-            callLayout.visibility = View.VISIBLE
-            incomingCallTxt.text = "${obj.nombre!!} is calling..."
-
-            acceptBtn.setOnClickListener {
-                firebaseRef.child(username).child("connId").setValue(uniqueId)
-                firebaseRef.child(username).child("isAvailable").setValue(true)
-
-                //para guardar el usuario
-                val id=UUID.randomUUID().toString()
-                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-                val currentDate = sdf.format(Date())
-                callended.child(id).child("receptor").setValue(obj2.nombre)
-                callended.child(id).child("emisor").setValue(obj.nombre)
-                callended.child(id).child("date").setValue(currentDate)
-                callended.child(id).child("idEmisor").setValue(obj.id)
-                callended.child(id).child("idReceptor").setValue(obj2.id)
-                callLayout.visibility = View.INVISIBLE
-
-                switchToControls()
-            }//aceptbtnonClick
-
-            rejectBtn.setOnClickListener {
-                firebaseRef.child(username).child("incoming").setValue(null)
-                callLayout.visibility = View.INVISIBLE
-            }//rejectbtn
-            rejectBtnCallingSended.setOnClickListener {
-                firebaseRef.child(username).child("incoming").setValue(null)
-                callLayout.visibility = View.INVISIBLE
-            }
-
-             */
+        binding.webView.post {
+            binding.webView.evaluateJavascript(functionString, null)
         }
-    }
-
-    private fun switchToControls() {
-        //webView.visibility=View.VISIBLE
-        //callControlLayout.visibility = View.VISIBLE
     }
 
     fun onPeerConnected() {
@@ -233,8 +161,7 @@ class VideoCallFragment : Fragment() {
                                 }
 
                                 finishCallBtn.setOnClickListener {
-                                    endCall()
-                                    setupWebView()
+                                    model.endCall()
                                 }
                             }
 
@@ -259,7 +186,7 @@ class VideoCallFragment : Fragment() {
 
                 }
                 is ResponseStatus.Success->{
-
+                    model.setCallUID(id = response.data,e = null,r = null)
                 }
                 is ResponseStatus.Error->{
 
