@@ -5,6 +5,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +62,7 @@ class SocialFragment : Fragment() {
                             "receptor" to receptor,
                             "emisor" to emisor
                         )
+                        Log.i("videocall","FSocial data E:$emisor R:$receptor")
                         findNavController().navigate(R.id.action_socialFragment_to_videoCallFragment , args)
                     }
                     binding.rvUsers.layoutManager=LinearLayoutManager(requireContext())

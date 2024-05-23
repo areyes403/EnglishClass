@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import mx.edu.itm.link.englishclass.R
@@ -25,6 +26,7 @@ import mx.edu.itm.link.englishclass.core.utils.snackBar
 import mx.edu.itm.link.englishclass.databinding.FragmentVideocallBinding
 import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 
+@AndroidEntryPoint
 class VideoCallFragment : Fragment() {
 
     private var _binding:FragmentVideocallBinding?=null
@@ -93,18 +95,7 @@ class VideoCallFragment : Fragment() {
     }
 
     private fun initializePeer() {
-
         callJavascriptFunction("javascript:init(\"${model.callUID}\")")
-        /*
-        firebaseRef.child(viewModel.fbUser.uid).child("incoming").addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
-            override fun onDataChange(snapshot: DataSnapshot) {
-                onCallRequest(snapshot.value as? String)
-            }
-        })
-
-         */
-
     }
 
     private fun callJavascriptFunction(functionString: String) {

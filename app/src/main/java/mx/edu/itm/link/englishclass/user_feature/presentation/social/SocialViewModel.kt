@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.edu.itm.link.englishclass.authentication_feature.domain.usecase.GetLocalUser
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
+import mx.edu.itm.link.englishclass.notification_feature.domain.usecase.SendNotification
 import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 import mx.edu.itm.link.englishclass.user_feature.domain.usecase.GetActiveUsers
 import mx.edu.itm.link.englishclass.user_feature.domain.usecase.GetCurrentUser
@@ -46,4 +47,5 @@ class SocialViewModel @Inject constructor(
             _activeUsers.value=it
         }
     }
+
 }

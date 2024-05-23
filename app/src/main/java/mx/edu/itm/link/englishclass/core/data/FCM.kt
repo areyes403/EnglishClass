@@ -1,5 +1,6 @@
 package mx.edu.itm.link.englishclass.core.data
 
+import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlinx.coroutines.CoroutineScope
@@ -37,6 +38,7 @@ class FCM: FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
+        Log.i("FCM",message.data.toString())
 
     }
 }

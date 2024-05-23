@@ -8,4 +8,5 @@ import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 interface UserRepository {
     suspend fun getUser(): FirebaseUser?
     suspend fun getActiveUsers(): Flow<ResponseStatus<List<User>>>
+    suspend fun getRemoteToken(uid:String):ResponseStatus<String>
 }
