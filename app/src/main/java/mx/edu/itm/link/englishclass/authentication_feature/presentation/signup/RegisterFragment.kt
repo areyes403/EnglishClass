@@ -73,7 +73,6 @@ class RegisterFragment : Fragment() {
 
                 }
                 is ResponseStatus.Success->{
-                    viewModel.insertUser(user = response.data)
                     findNavController().setGraph(R.navigation.nav_home)
                 }
                 is ResponseStatus.Error->{

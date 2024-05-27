@@ -16,7 +16,7 @@ import mx.edu.itm.link.englishclass.core.utils.FirebaseReferences
 import mx.edu.itm.link.englishclass.core.utils.FirestoreCollecions
 import javax.inject.Inject
 
-class CallRepositoryImp @Inject constructor(
+class CallRepositoryImp(
     private val firestore: FirebaseFirestore,
     private val realtimeDatabase:FirebaseDatabase
 ) : CallRepository {

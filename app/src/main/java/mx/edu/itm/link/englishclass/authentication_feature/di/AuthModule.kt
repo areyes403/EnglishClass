@@ -21,10 +21,8 @@ import javax.inject.Singleton
 object AuthModule {
     @Provides
     @Singleton
-    fun bindAuthRepository(
-        auth: FirebaseAuth,
-        firestore:FirebaseFirestore,
-        messaging:FirebaseMessaging
-    ): AuthRepository = AuthRepositoryImp(auth,firestore,messaging)
+    fun provideAuthRepository(
+        auth: FirebaseAuth
+    ): AuthRepository = AuthRepositoryImp(auth)
 }
 

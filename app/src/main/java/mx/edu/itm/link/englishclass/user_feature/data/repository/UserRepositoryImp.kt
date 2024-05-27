@@ -20,11 +20,31 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 class UserRepositoryImp(
-    private val authRef:FirebaseAuth,
     private val firestore:FirebaseFirestore
 ):UserRepository {
-    override suspend fun getUser(): FirebaseUser? = authRef.currentUser
+    override suspend fun getUser(uid: String): ResponseStatus<User> = try {
+        val user= firestore.collection(FirestoreCollecions.USER)
+            .document(uid)
+            .get()
+            .await()
+            .toObject(User::class.java)
 
+        ResponseStatus.Success(user!!)
+    } catch (e:Exception){
+        ResponseStatus.Error(e.localizedMessage)
+    }
+
+    override suspend fun setUser(user: User): ResponseStatus<Unit> = try {
+
+        firestore.collection(FirestoreCollecions.USER)
+            .document(user.id)
+            .set(user)
+            .await()
+
+        ResponseStatus.Success(Unit)
+    }catch (e:Exception){
+        ResponseStatus.Error(e.localizedMessage)
+    }
 
     override suspend fun getActiveUsers(): Flow<ResponseStatus<List<User>>> = firestore.collection(FirestoreCollecions.USER)
         .snapshots()
@@ -44,6 +64,17 @@ class UserRepositoryImp(
         ResponseStatus.Success(token!!.token)
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
+    }
+
+    override suspend fun updateRemoteToken(uid: String, token: Token) {
+        try {
+            firestore.collection(FirestoreCollecions.TOKEN)
+                .document(uid)
+                .set(token)
+                .await()
+        }catch (_:Exception){
+
+        }
     }
 
 

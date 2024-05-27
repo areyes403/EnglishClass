@@ -8,7 +8,7 @@ import mx.edu.itm.link.englishclass.core.utils.toUserEntity
 import mx.edu.itm.link.englishclass.user_feature.domain.model.User
 import javax.inject.Inject
 
-class RoomRepositoryImp @Inject constructor(
+class RoomRepositoryImp(
     private val userDao: UserDao
 ) :RoomRepository {
 
@@ -23,6 +23,6 @@ class RoomRepositoryImp @Inject constructor(
     }
 
     override suspend fun deleteUser(user: User) {
-        TODO("Not yet implemented")
+        userDao.delete(user = user.toUserEntity())
     }
 }

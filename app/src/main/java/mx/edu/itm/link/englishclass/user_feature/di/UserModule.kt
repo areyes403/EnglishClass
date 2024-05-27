@@ -19,8 +19,7 @@ object UserModule {
 
     @Provides
     @Singleton
-    fun bindUserModule(
-        auth: FirebaseAuth,
+    fun provideUserModule(
         firestore:FirebaseFirestore
-    ): UserRepository= UserRepositoryImp(authRef = auth, firestore = firestore)
+    ): UserRepository= UserRepositoryImp(firestore = firestore)
 }

@@ -13,36 +13,27 @@ import mx.edu.itm.link.englishclass.core.utils.FirestoreCollecions
 import javax.inject.Inject
 import javax.inject.Singleton
 
-class AuthRepositoryImp @Inject constructor(
-    private val authRef: FirebaseAuth,
-    private val firestoreRef:FirebaseFirestore,
-    private val fcm:FirebaseMessaging
+class AuthRepositoryImp (
+    private val authRef: FirebaseAuth
 ) : AuthRepository {
 
-    override suspend fun login(emai: String, password: String): ResponseStatus<User> = try {
-        val ref = authRef.signInWithEmailAndPassword(emai,password).await()
-        val user= firestoreRef.collection(FirestoreCollecions.USER)
-            .document(ref.user!!.uid)
-            .get()
-            .await()
-            .toObject(User::class.java)
+    override suspend fun login(email: String, password: String): ResponseStatus<String> = try {
 
-        updateTokenToServer(id = user?.id.toString(), token = getToken())
+        val ref = authRef.signInWithEmailAndPassword(email,password).await()
 
-        ResponseStatus.Success(user!!)
+        ResponseStatus.Success(ref.user!!.uid)
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
     }
 
-    override suspend fun register(email: String, password: String, user: User): ResponseStatus<User> = try {
+    override suspend fun register(email: String, password: String): ResponseStatus<String> = try {
         val uid = authRef.createUserWithEmailAndPassword(email,password).await().user!!.uid
-        user.id=uid
-        firestoreRef.collection(FirestoreCollecions.USER).document(user.id).set(user)
-        ResponseStatus.Success(user)
+
+        ResponseStatus.Success(uid)
     }catch (e:Exception){
         ResponseStatus.Error(e.localizedMessage)
     }
-
+/*
     override suspend fun updateTokenToServer(id: String,token:String) {
         try {
             val data= Token(token = token)
@@ -55,5 +46,6 @@ class AuthRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getToken(): String = fcm.token.await()
+ */
+
 }
