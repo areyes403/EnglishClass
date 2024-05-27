@@ -39,6 +39,8 @@ class FCM: FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         Log.i("FCM",message.data.toString())
+        Log.i("FCM",message.notification?.title.toString())
+        Log.i("FCM",message.notification?.body.toString())
 
     }
 }

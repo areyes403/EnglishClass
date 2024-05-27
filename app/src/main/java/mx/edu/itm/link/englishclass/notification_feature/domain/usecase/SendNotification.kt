@@ -17,15 +17,18 @@ class SendNotification @Inject constructor(
             is ResponseStatus.Loading->{ResponseStatus.Loading}
             is ResponseStatus.Error->{ResponseStatus.Error(tokenResult.error)}
             is ResponseStatus.Success->{
-                Log.i("videocall","Token from $uid:${tokenResult.data}")
+                val data= mapOf("key1" to "my first key")
                 val notification=NotificationDao(
                     to = tokenResult.data,
-                    NotificationData(
+                    data = data,
+                    notification = NotificationData(
                         title = "Mi notificacion",
-                        body = "Este es un test"
+                        body = "Este es un test",
+                        content_available = true,
+                        priority = "hight",
+                        image = ""
                     )
                 )
-                Log.i("videocall","Send notification use case: $notification")
                 val notificationResult=repo.sendNotification(notification)
                 if (notificationResult is ResponseStatus.Success){
                     ResponseStatus.Success(Unit)
