@@ -15,13 +15,11 @@ class NotificationRepositoryImp(
         val result=notificationService.sendNotification(notificationDao = notification)
 
         if (result.isSuccessful){
-            Log.i("videocall","Notification repo response: success")
             ResponseStatus.Success(Unit)
+        }else{
+            val error=result.errorBody()?.string()
+            ResponseStatus.Error(error)
         }
-
-        val error=result.errorBody()?.string()
-        Log.i("videocall","Notification repo response error:${error}")
-        ResponseStatus.Error(error)
     }catch (e:Exception){
         Log.i("videocall","Notification repo response error:${e.localizedMessage}")
         ResponseStatus.Error("Error")

@@ -8,5 +8,5 @@ import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 interface CallRepository {
     suspend fun getCallHistory(idUser:String):Flow<ResponseStatus<List<RealtimeCall>>>
     fun observeCall(id:String):Flow<ResponseStatus<RealtimeCall>>
-    suspend fun requestCall(videoCallData:RealtimeCall,onResult:(ResponseStatus<String>)->Unit)
+    suspend fun requestCall(videoCallData:RealtimeCall):ResponseStatus<String>
 }

@@ -30,16 +30,17 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHost.navController
 
-        if (authViewModel.user.value == null){
-            Log.i("userDetails", "El user es null")
-            binding.bottonNavigation.hide()
-            navController.setGraph(R.navigation.nav_auth)
-        }else{
-            Log.i("userDetails", authViewModel.user.value.toString())
-            binding.bottonNavigation.show()
-            navController.setGraph(R.navigation.nav_home)
-            binding.bottonNavigation.setupWithNavController(navController)
+        authViewModel.user.observe(this){user->
+            if (user == null){
+                binding.bottonNavigation.hide()
+                navController.setGraph(R.navigation.nav_auth)
+            }else{
+                binding.bottonNavigation.show()
+                navController.setGraph(R.navigation.nav_home)
+                binding.bottonNavigation.setupWithNavController(navController)
+            }
         }
+
     }
 
 }

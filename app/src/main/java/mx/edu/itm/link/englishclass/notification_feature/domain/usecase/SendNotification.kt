@@ -1,7 +1,9 @@
 package mx.edu.itm.link.englishclass.notification_feature.domain.usecase
 
 import android.util.Log
+import mx.edu.itm.link.englishclass.core.domain.model.GeneralId
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
+import mx.edu.itm.link.englishclass.core.utils.ARGS.CALL_UID
 import mx.edu.itm.link.englishclass.notification_feature.data.remote.NotificationDao
 import mx.edu.itm.link.englishclass.notification_feature.data.remote.NotificationData
 import mx.edu.itm.link.englishclass.notification_feature.domain.repository.NotificationRespository
@@ -12,12 +14,12 @@ class SendNotification @Inject constructor(
     private val repo:NotificationRespository,
     private val userRepo:UserRepository
 ) {
-    suspend operator fun invoke(uid:String):ResponseStatus<Unit> {
-        return when(val tokenResult=userRepo.getRemoteToken(uid = uid)){
+    suspend operator fun invoke(receptor:GeneralId,idCall:String,emisor:GeneralId):ResponseStatus<Unit> {
+        return when(val tokenResult=userRepo.getRemoteToken(uid = receptor.id)){
             is ResponseStatus.Loading->{ResponseStatus.Loading}
             is ResponseStatus.Error->{ResponseStatus.Error(tokenResult.error)}
             is ResponseStatus.Success->{
-                val data= mapOf("key1" to "my first key")
+                val data= mapOf(CALL_UID to idCall, "emisor" to emisor)
                 val notification=NotificationDao(
                     to = tokenResult.data,
                     data = data,
@@ -31,8 +33,10 @@ class SendNotification @Inject constructor(
                 )
                 val notificationResult=repo.sendNotification(notification)
                 if (notificationResult is ResponseStatus.Success){
+                    Log.i("notification","SendNotificationUseCase success")
                     ResponseStatus.Success(Unit)
                 }else{
+                    Log.i("notification","SendNotificationUseCase success")
                     ResponseStatus.Error((notificationResult as ResponseStatus.Error).error)
                 }
             }

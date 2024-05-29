@@ -7,8 +7,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import mx.edu.itm.link.englishclass.authentication_feature.domain.model.Token
 import mx.edu.itm.link.englishclass.authentication_feature.domain.usecase.GetLocalUser
 import mx.edu.itm.link.englishclass.authentication_feature.domain.usecase.UpdateToken
+import mx.edu.itm.link.englishclass.core.utils.ARGS.CALL_UID
 import javax.inject.Inject
 
 class FCM: FirebaseMessagingService() {
@@ -26,7 +28,7 @@ class FCM: FirebaseMessagingService() {
             scope.launch {
                 val user=getUserUseCase.invoke()
                 user?.let {
-                    updateTokenUseCase.invoke(idUser = it.id, myToken = token)
+                    updateTokenUseCase.invoke(idUser = it.id, myToken = Token(token = token))
                 }
             }
         }catch (_:Exception){
@@ -39,6 +41,8 @@ class FCM: FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         Log.i("FCM",message.data.toString())
+        Log.i("FCM", message.data[CALL_UID]!!)
+        Log.i("FCM",message.data["emisor"].toString())
         Log.i("FCM",message.notification?.title.toString())
         Log.i("FCM",message.notification?.body.toString())
 

@@ -54,7 +54,7 @@ class SocialFragment : Fragment() {
                 is ResponseStatus.Loading->{
                 }
                 is ResponseStatus.Success->{
-                    val adapter=AdapterActiveUsers(response.data){selectedUser->
+                    val adapter=AdapterActiveUsers(response.data) { selectedUser->
                         val receptor=GeneralId(id = selectedUser.id, name = selectedUser.name)
                         val emisor=GeneralId(id = viewModel.user.value!!.id,viewModel.user.value!!.name)
 
@@ -62,11 +62,13 @@ class SocialFragment : Fragment() {
                             "receptor" to receptor,
                             "emisor" to emisor
                         )
-                        Log.i("videocall","FSocial data E:$emisor R:$receptor")
+
                         findNavController().navigate(R.id.action_socialFragment_to_videoCallFragment , args)
                     }
+
                     binding.rvUsers.layoutManager=LinearLayoutManager(requireContext())
                     binding.rvUsers.adapter=adapter
+
                 }
                 is ResponseStatus.Error->{
                     snackBar(response.error)

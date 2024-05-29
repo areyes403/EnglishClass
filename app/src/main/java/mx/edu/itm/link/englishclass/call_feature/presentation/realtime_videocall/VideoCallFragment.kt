@@ -2,6 +2,7 @@ package mx.edu.itm.link.englishclass.call_feature.presentation.realtime_videocal
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import mx.edu.itm.link.englishclass.call_feature.domain.model.CallState
 import mx.edu.itm.link.englishclass.core.domain.model.GeneralId
 import mx.edu.itm.link.englishclass.core.domain.model.ResponseStatus
 import mx.edu.itm.link.englishclass.core.utils.ARGS
+import mx.edu.itm.link.englishclass.core.utils.ARGS.CALL_UID
 import mx.edu.itm.link.englishclass.core.utils.show
 import mx.edu.itm.link.englishclass.core.utils.snackBar
 import mx.edu.itm.link.englishclass.databinding.FragmentVideocallBinding
@@ -59,7 +61,7 @@ class VideoCallFragment : Fragment() {
                 it.getParcelable("receptor",GeneralId::class.java)
             }else null
 
-            model.setCallUID(id = it.getString(ARGS.CALL_UID,""), e = emisor, r = receptor)
+            model.setCallUID(id = it.getString(CALL_UID,""), e = emisor, r = receptor)
         }
 
         observers()
@@ -110,6 +112,7 @@ class VideoCallFragment : Fragment() {
 
     private fun observers() {
         model.videoRealtimeCall.onEach { observer->
+            Log.i("realtimeVideoCall","Observing")
             when(observer){
                 is ResponseStatus.Loading->{
 
@@ -180,7 +183,7 @@ class VideoCallFragment : Fragment() {
                     model.setCallUID(id = response.data,e = null,r = null)
                 }
                 is ResponseStatus.Error->{
-
+                    snackBar(msg = response.error)
                 }
             }
         }

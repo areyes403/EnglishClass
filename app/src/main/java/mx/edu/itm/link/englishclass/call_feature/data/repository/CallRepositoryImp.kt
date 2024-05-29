@@ -42,17 +42,15 @@ class CallRepositoryImp(
             ResponseStatus.Error(it.localizedMessage)
         }
 
-    override suspend fun requestCall(videoCallData: RealtimeCall, onResult: (ResponseStatus<String>) -> Unit) {
-        try {
-            realtimeDatabase.getReference(FirebaseReferences.CALLS)
-                .child(videoCallData.id)
-                .setValue(videoCallData)
-                .await()
+    override suspend fun requestCall(videoCallData: RealtimeCall):ResponseStatus<String> = try {
+        realtimeDatabase.getReference(FirebaseReferences.CALLS)
+            .child(videoCallData.id)
+            .setValue(videoCallData)
+            .await()
 
-            onResult.invoke(ResponseStatus.Success(videoCallData.id))
+        ResponseStatus.Success(videoCallData.id)
 
-        }catch (e:Exception){
-            onResult.invoke(ResponseStatus.Error(e.localizedMessage))
-        }
+    }catch (e:Exception){
+        ResponseStatus.Error(e.localizedMessage)
     }
 }

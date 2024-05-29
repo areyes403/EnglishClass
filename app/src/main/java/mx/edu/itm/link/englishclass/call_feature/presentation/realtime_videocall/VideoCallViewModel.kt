@@ -28,7 +28,7 @@ class VideoCallViewModel @Inject constructor(
     private val observeVideoCallUseCase:ObserveCall,
     private val getLocalUserUseCase:GetLocalUser,
     private val requestCallUseCase:RequestCall,
-    private val sendNotificationUseCase:SendNotification
+    //private val sendNotificationUseCase:SendNotification
 ): ViewModel() {
 
     private val _videoRealtimeCall=MutableStateFlow<ResponseStatus<RealtimeCall>>(ResponseStatus.Loading)
@@ -37,9 +37,6 @@ class VideoCallViewModel @Inject constructor(
 
     private val _requestCall = MutableLiveData<ResponseStatus<String>>()
     val requestCall:LiveData<ResponseStatus<String>> get() = _requestCall
-
-    private val _sendNotification=MutableLiveData<ResponseStatus<Unit>>()
-    val sendNotification:LiveData<ResponseStatus<Unit>> get() = _sendNotification
 
 
     var callUID=""
@@ -55,7 +52,9 @@ class VideoCallViewModel @Inject constructor(
 
     fun setCallUID(id:String,e:GeneralId?,r:GeneralId?){
         if (id.isBlank()){
+
             _requestCall.value=ResponseStatus.Loading
+
             viewModelScope.launch(Dispatchers.IO){
                 val call=RealtimeCall(
                     id = getUniqueUID(),
@@ -64,12 +63,9 @@ class VideoCallViewModel @Inject constructor(
                     state = CallState.CONNECTING.toString(),
                     created_At = ServerValue.TIMESTAMP
                 )
-                Log.i("videocall","VM Data"+call.toString())
-                requestCallUseCase.invoke(data = call){
-                    _requestCall.postValue(it)
-                    startObserver(uid = call.id)
-                }
-                sendNotification(r!!.id)
+                _requestCall.postValue(requestCallUseCase(data = call))
+                //startObserver(uid = "")
+                //sendNotification(receptor = r!!.id, id = call.id, emisor = e!!)
             }
         }else{
             startObserver(uid = id)
@@ -80,12 +76,14 @@ class VideoCallViewModel @Inject constructor(
 
     }
 
-    private suspend fun sendNotification(receptor:String){
-        Log.i("videocall","Receptor: $receptor")
-        sendNotificationUseCase(receptor)
+    /*
+    private suspend fun sendNotification(receptor:String,id: String,emisor:GeneralId){
+        sendNotificationUseCase(receptor, idCall = id, emisor = emisor)
     }
 
-    private fun startObserver(uid:String) =viewModelScope.launch(Dispatchers.IO){
+     */
+
+    private fun startObserver(uid:String) = viewModelScope.launch(Dispatchers.IO){
         observeVideoCallUseCase.invoke(uid).collect{
             _videoRealtimeCall.value=it
         }
